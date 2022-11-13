@@ -26,7 +26,23 @@ like spamtrap+JHTP32d23@abighairy.com
 */
 #include <stdio.h>
 
-int main() {
-    printf( "Hello world!\n");    
+char *_pstrUsage = "joes-httpd Joe's HTTP Document Server Isn't Apache, Baby (JHSIAB)\n"
+    "Copyright (c)2022 by Joe Winett @abighairyspider - GNU Affero General Public License\n"
+    "\n"
+    "Usage: joes-httpd\n"
+    "\n";
+    
+
+
+
+void joe_Usage();
+
+int main( int argc, char *argv[] ) {
+    
+    printf( "%s\n", _pstrUsage );
+
+
+
     return 0;
 }
+
