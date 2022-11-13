@@ -1,9 +1,10 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "Debian",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "\\\\wsl$\\Debian\\usr\\include/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -12,7 +13,8 @@
             ],
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "windows-msvc-x64"
+            "intelliSenseMode": "windows-msvc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
         },
         {
             "name": "Windows",
@@ -27,6 +29,22 @@
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-msvc-x64"
+        },
+        {
+            "name": "Debian 2",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "\\\\wsl$\\Debian\\usr\\include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "\\\\wsl$\\Debian\\usr\\bin\\gcc"
         }
     ],
     "version": 4
