@@ -1,6 +1,4 @@
-# joes-httpd ![c-cpp workflow](https://github.com/jwinett/joes-httpd/actions/workflows/c-cpp.yml/badge.svg)
-
-## Joe's HTTP Server Isn't Apache, Baby (JHSIAB)
+# Joe's HTTP Server Isn't Apache, Baby (JHSIAB) ![c-cpp workflow](https://github.com/jwinett/joes-httpd/actions/workflows/c-cpp.yml/badge.svg)
 This is a simple web document server for development use.
 ## Hype
 This is the best, most awesomeness-packed simple development tool ever conceived by me.   
