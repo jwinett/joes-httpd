@@ -8,3 +8,9 @@ Why use what somebody else wrote 40 years ago when you can spend all week writin
 
 - November 14, 2022 (day two, it's a Monday)
 
+# The Hypertext Transfer Protocol (HTTP) 
+is an application-level protocol with the lightness and speed necessary for distributed, collaborative, hypermedia information systems.
+
+RFC 1945: Hypertext Transfer Protocol -- HTTP/1.0 
+https://www.rfc-editor.org/rfc/rfc1945.html
+

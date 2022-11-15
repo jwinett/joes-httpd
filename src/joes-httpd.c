@@ -29,17 +29,14 @@ like spamtrap+JHTP32d23@abighairy.com
 char *_pstrUsage = "joes-httpd Joe's HTTP Document Server Isn't Apache, Baby (JHSIAB)\n"
     "Copyright (c)2022 by Joe Winett @abighairyspider - GNU Affero General Public License\n"
     "\n"
-    "Usage: joes-httpd\n"
+    "Usage: %s\n"
     "\n";
     
 
-
-
-void joe_Usage();
-
 int main( int argc, char *argv[] ) {
     
-    printf( "%s\n", _pstrUsage );
+
+    printf( _pstrUsage, argv[0] );
 
 
 
