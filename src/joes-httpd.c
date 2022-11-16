@@ -26,20 +26,102 @@ like spamtrap+JHTP32d23@abighairy.com
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
 
-char *_pstrUsage = "\n"
-    "Joe's HTTP Document Server Isn't Apache, Baby (JHSIAB)\n"
-    "Copyright (c)2022 by Joe Winett @abighairyspider - GNU Affero General Public License\n"
-    "\n"    
-    "%s %s\n"
-    "\n";
+// Declare, Instantiate, and Initialize a pointer to a string
+char *_pstrTitleHeader =     
+    "Joe's HTTP Document Server Isn't Apache, Baby (JHSIAB)\n" 
+    "Copyright (c)2022 by Joe Winett @abighairyspider - GNU Affero General Public License\n"    
+    ; 
+
+    /*
+    No need for an operator to stick the string together because
+    c compilers continue adding string literals together until the
+    end of statement character, which is a semicolon.
+
+    So:
+
+    char *Name = "Joe";  
+    
+    char *     a pointer (*) that points at a character (char)
+    Name       a symbol called Name representing where to store the (char *) value
+    =          the assignment operator
+    "Joe"      a string literal
+    ;          a semicolon is the end-of-statement marker
+
+    Means in total:
+
+    1. Save space in my program memory for a string containing 3 visible characters 'J', 'o', and 'e' 
+    2. Put the location of the first byte of memory, where the 'J' is stored, into a variable called Name
+
+    So, Name points at memory containing "Joe\0" (a zero byte will end up on the end, more later)
+
+    char *Name = "Joe" "Winett";  
+
+    Name is then "JoeWinett" because when a second string literal "Winett" is encountered before 
+    the semicolon it is added to the string already started.  "Joe" and "Winett" are contatonated
+    into one string of characters which is stored into memory, then the location of the first 
+    character is stored into _Name_ -- then _Name_ is said to be a _character pointer_ that points
+    at the _J_ in Joe Winett.    A string in the c language is stored with a _NULL byte_ at the end.
+
+    A _NULL_ is the value 0.  In the case of a string of ASCII 1-byte characters, then the zero value
+    is literally a byte of 8-bits that are all zero.  So, "Joe Winett" is actually stored as:
+
+    'J', 'o', 'e', ' ', 'W', 'i', 'n', 'e', 't', 't', '\0'
+
+    where I'm representing characters as character literals, in each enclosed in a pair of single quote marks.
+
+    '\0' represents a _NULL_ character of value 0
+    '\n' represents a _new line_ character value 10    
+    '\\' represents a _backslash_ character value whatever
+
+    If you want to include a backslash character, it must be "escaped" by itself, '\\'
+    because the backslash itself marks the next character is being "escaped"
+
+    Where were we?
+
+    2022-11-16 Happy Birthday, Kristi Winett -- 55 now, eh?  Nice.
+    */
+   
+
 
 char *_pstrCommandPath = "joes-httpd";
-char *_pstrVerb = "[help|run]";
 
+char *_apstrVerbs[] = {
+    "help",
+    "run"    
+}; 
+
+char *_pstrVerb = "";
+
+
+/**
+ * Display Title Header
+*/
+void PrintTitleHeader() {
+    // build a string and print it to the file stream stdout:            
+    printf( "\n%s\n", _pstrTitleHeader ); // new line, header text, new line
+}
+
+/** 
+ * Display Usage and/or Error Message
+*/
 void HelpUsageError( char *ErrorString ) {
     
-    printf( _pstrUsage, _pstrCommandPath, _pstrVerb );    
+    PrintTitleHeader();
+
+    // build a string and print it to the file stream stdout:            
+    printf( "%s ", _pstrCommandPath ); // command path, space    
+    
+    // output list of available command verbs
+    for( int i=0; i<sizeof(_apstrVerbs)/sizeof(char *); i=i+1 ) {  // loop through the list of commands (verbs)
+        char sep = ( i == 0 ) ? '[' : '|';
+        printf( "%c%s", sep, _apstrVerbs[i] ); // print separator character then the verb string
+    }
+
+    printf( "]\n\n"); // put (print) right square bracket, new line, new line (skips a line)
+
 
     if( ErrorString && *ErrorString ) {
         printf( "** %s\n\n", ErrorString );                
@@ -48,7 +130,17 @@ void HelpUsageError( char *ErrorString ) {
 
 }
 
+bool IsValidCommand( char *pstrParameter ) {
     
+    for( int i=0; i<sizeof(_apstrVerbs)/sizeof(char *); i=i+1 ) {        
+        if( strcmp( _apstrVerbs[i], pstrParameter ) == 0 ) {
+            return true;
+        }
+    }    
+    return false;
+}
+
+
 
 int main( int argc, char *argv[] ) {
 
@@ -60,20 +152,28 @@ int main( int argc, char *argv[] ) {
     }
 
     _pstrCommandPath = argv[0];
-
-    if( argc == 1 ) {
-        HelpUsageError("nothing to do (no command specified)");
-        return -1;
-    }
-
     _pstrVerb = argv[1];
 
-    HelpUsageError("unknown command");
-
-
+    if( IsValidCommand(_pstrVerb) == false ) {  
+        char achBuff[128];
+        snprintf( achBuff, sizeof(achBuff), "unknown command [%s]", _pstrVerb );
+        HelpUsageError(achBuff);
+        return -1; // exit with an error value -1
+    }
     
     
+    // TODO: Actually do something, but for now just
+    // display the Usage, no error
 
-    return 0;
+    PrintTitleHeader();
+
+    printf( "[%s] SUCCESS!\n\n", _pstrVerb );
+
+    return 0; // return no error
+
+    /* 0 is SUCCESS or NO ERROR in UNIX, XENIX, Linux, (i.e., POSIX) command line terminal processing:
+    Dr. Bourne's shell (/bin/sh) or GNU's Bourne Again shell (/bin/bash)
+    */
+    
 }
 
