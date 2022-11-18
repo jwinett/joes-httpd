@@ -1,6 +1,8 @@
 /*
-joes-httpd Joe's HTTP Document Server Isn't Apache, Baby (JHSIAB)
-Copyright (c)2022 Joe Winett @abighairyspider 
+joes-httpd Joe's HTTP Document Server Isn't Apache, Baby
+Cheater Cheater Edition (JHSIAB CCE) 
+
+Copyright (c)2022 Joe Winett @abighairyspider of TeddyBear.com
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
@@ -22,7 +24,7 @@ Pro-tip: Don't email me at these addresses or you're a spammer bot.
 My honey trap email address is spamtrap+joeshttpd@abighairy.com
 
 Use a unique ID on your spam traps for total identification domination,
-like spamtrap+JHTP32d23@abighairy.com
+like spamtrap+JHThsd23@abighairy.com
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,7 +33,7 @@ like spamtrap+JHTP32d23@abighairy.com
 
 // Declare, Instantiate, and Initialize a pointer to a string
 char *_pstrTitleHeader =     
-    "Joe's HTTP Document Server Isn't Apache, Baby (JHSIAB)\n" 
+    "Joe's HTTP Document Server Isn't Apache, Baby | Cheater Cheater Edition (JHSIAB CCE)\n" 
     "Copyright (c)2022 by Joe Winett @abighairyspider - GNU Affero General Public License\n"    
     ; 
 
@@ -167,9 +169,11 @@ int main( int argc, char *argv[] ) {
 
     PrintTitleHeader();
 
-    printf( "[%s] SUCCESS!\n\n", _pstrVerb );
+    puts( "//cheater cheater mode activated\nsystem( python3 -m http.server 9000 );\n" );
 
-    return 0; // return no error
+    
+
+    return system( "python3 -m http.server 9000" );
 
     /* 0 is SUCCESS or NO ERROR in UNIX, XENIX, Linux, (i.e., POSIX) command line terminal processing:
     Dr. Bourne's shell (/bin/sh) or GNU's Bourne Again shell (/bin/bash)
