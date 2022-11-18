@@ -1,9 +1,9 @@
 # Joe's HTTP Server Isn't Apache, Baby (JHSIAB) ![c-cpp workflow](https://github.com/jwinett/joes-httpd/actions/workflows/c-cpp.yml/badge.svg)
-This is a simple web document server for development use.
+This is a simple web document server for development use, like `python3 -m http.server 9000` except in c
 ## Hype
 This is the best, most awesomeness-packed simple development tool ever conceived by me.   
 ## Motto
-Why use what somebody else wrote 40 years ago when you can spend all week writing it yourself, right now?  Exactly.  Science.  That's why.
+Gotta do it the hard way, for science.
 
 - November 14, 2022 (day two, it's a Monday)
 
